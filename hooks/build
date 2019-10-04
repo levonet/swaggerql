@@ -9,9 +9,14 @@ echo "DOCKER_REPO=$DOCKER_REPO"
 echo "IMAGE_NAME=$IMAGE_NAME"
 echo "------------------------------------------------------------------------------"
 
+BUILD_ARG_BASE_CONTAINER=""
+if [ "x${BASE_CONTAINER}" != "x" ]; then
+    BUILD_ARG_BASE_CONTAINER="--build-arg BASE_CONTAINER=${BASE_CONTAINER}"
+fi
+
 docker build \
-    --build-arg BASE_CONTAINER="${BASE_CONTAINER}" \
     --build-arg DRIVER_MODULE="${DRIVER_MODULE}" \
+    "${BUILD_ARG_BASE_CONTAINER}" \
     -f "${DOCKERFILE_PATH}" \
     -t "${IMAGE_NAME}" \
     .
