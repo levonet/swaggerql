@@ -11,8 +11,10 @@ echo "--------------------------------------------------------------------------
 
 BUILD_ARG_BASE_CONTAINER=""
 if [ "x${BASE_CONTAINER}" != "x" ]; then
-    BUILD_ARG_BASE_CONTAINER="--build-arg BASE_CONTAINER=${BASE_CONTAINER}"
+    BUILD_ARG_BASE_CONTAINER=--build-arg BASE_CONTAINER="${BASE_CONTAINER}"
 fi
+
+echo "[${BUILD_ARG_BASE_CONTAINER}]"
 
 docker build \
     --build-arg DRIVER_MODULE="${DRIVER_MODULE}" \
