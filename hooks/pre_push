@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "------------------------------------------------------------------------------ pre_push begin"
+echo "BASE_CONTAINER=$BASE_CONTAINER"
+echo "DRIVER_MODULE=$DRIVER_MODULE"
+echo "DOCKERFILE_PATH=$DOCKERFILE_PATH"
+echo "IMAGE_NAME=$IMAGE_NAME"
+echo "SOURCE_BRANCH=$SOURCE_BRANCH"
+echo "SOURCE_COMMIT=$SOURCE_COMMIT"
+echo "COMMIT_MSG=$COMMIT_MSG"
+echo "DOCKER_REPO=$DOCKER_REPO"
+echo "DOCKER_TAG=$DOCKER_TAG"
+echo "------------------------------------------------------------------------------ pre_push end"
