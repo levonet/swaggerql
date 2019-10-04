@@ -1,29 +1,15 @@
 #!/bin/bash
 
-echo "------------------------------------------------------------------------------ build begin"
+echo "---------------------------------------------------------------- build begin ---"
 echo "BASE_CONTAINER=$BASE_CONTAINER"
 echo "DRIVER_MODULE=$DRIVER_MODULE"
-echo "DOCKERFILE_PATH=$DOCKERFILE_PATH"
-echo "DOCKER_TAG=$DOCKER_TAG"
-echo "DOCKER_REPO=$DOCKER_REPO"
-echo "IMAGE_NAME=$IMAGE_NAME"
-echo "------------------------------------------------------------------------------"
-
-BUILD_ARG_BASE_CONTAINER=""
-if [ "x${BASE_CONTAINER}" != "x" ]; then
-    BUILD_ARG_BASE_CONTAINER=--build-arg BASE_CONTAINER="${BASE_CONTAINER}"
-fi
-
-echo "[${BUILD_ARG_BASE_CONTAINER}]"
 
 docker build \
+    --build-arg BASE_CONTAINER="${BASE_CONTAINER}" \
     --build-arg DRIVER_MODULE="${DRIVER_MODULE}" \
-    "${BUILD_ARG_BASE_CONTAINER}" \
     -f "${DOCKERFILE_PATH}" \
     -t "${IMAGE_NAME}" \
     .
-
-echo "------------------------------------------------------------------------------"
 
 for tag in $(echo $DOCKER_TAG | tr "," "\n")
 do
@@ -33,4 +19,4 @@ do
     fi
 done
 
-echo "------------------------------------------------------------------------------ build end"
+echo "------------------------------------------------------------------ build end ---"
